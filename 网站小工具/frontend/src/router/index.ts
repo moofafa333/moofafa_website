@@ -7,9 +7,10 @@ import ImageMosaic from '../views/ImageMosaic.vue'
 import ImageWatermark from '../views/ImageWatermark.vue'
 import FileWatermark from '../views/FileWatermark.vue'
 import FileConvert from '../views/FileConvert.vue'
+import ImageConverterView from '../views/ImageConverterView.vue'
 
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
@@ -50,6 +51,11 @@ const router = createRouter({
       path: '/file-convert',
       name: 'file-convert',
       component: FileConvert
+    },
+    {
+      path: '/image-converter',
+      name: 'imageConverter',
+      component: ImageConverterView
     }
   ]
 })

@@ -4,6 +4,7 @@ const helmet = require('helmet');
 const compression = require('compression');
 const morgan = require('morgan');
 const compressRoutes = require('./routes/compressRoutes');
+const imageRoutes = require('./routes/imageRoutes');
 
 // 创建Express应用
 const app = express();
@@ -12,11 +13,13 @@ const app = express();
 app.use(cors({
   origin: 'http://localhost:5173', // Vite默认端口
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type']
+  allowedHeaders: ['Content-Type', 'Accept']
 }));
 
 // 中间件配置
-app.use(helmet());             // 安全头
+app.use(helmet({
+  crossOriginResourcePolicy: { policy: "cross-origin" }
+}));             // 安全头
 app.use(compression());        // 响应压缩
 app.use(express.json());       // JSON解析
 app.use(morgan('combined'));   // 日志记录
@@ -36,6 +39,7 @@ app.use(express.static('public'));
 app.use('/api/tools', require('./routes/tools'));
 app.use('/api/files', require('./routes/files'));
 app.use('/api', compressRoutes);
+app.use('/api', imageRoutes);  // 添加图片转换路由
 
 // 错误处理中间件
 app.use((err, req, res, next) => {
