@@ -75,3 +75,39 @@ export const convertImage = async (req: Request, res: Response) => {
     });
   }
 }; 
+
+export const cropImage = async (req: Request, res: Response) => {
+  try {
+    if (!req.file) {
+      return res.status(400).json({ error: '没有上传文件' })
+    }
+
+    const { width, height, left, top, rotate } = req.body
+    const image = sharp(req.file.buffer)
+    
+    // 获取图片信息
+    const metadata = await image.metadata()
+    
+    // 处理图片
+    const processedImage = await image
+      .rotate(parseInt(rotate) || 0) // 应用旋转
+      .extract({ // 应用裁剪
+        left: parseInt(left) || 0,
+        top: parseInt(top) || 0,
+        width: parseInt(width) || metadata.width || 0,
+        height: parseInt(height) || metadata.height || 0
+      })
+      .toFormat('png') // 转换为PNG格式
+      .toBuffer()
+
+    // 设置响应头
+    res.setHeader('Content-Type', 'image/png')
+    res.setHeader('Content-Disposition', 'attachment; filename=cropped-image.png')
+    
+    // 发送处理后的图片
+    res.send(processedImage)
+  } catch (error) {
+    console.error('图片处理错误:', error)
+    res.status(500).json({ error: '图片处理失败' })
+  }
+} 

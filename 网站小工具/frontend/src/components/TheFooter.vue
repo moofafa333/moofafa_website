@@ -1,39 +1,43 @@
 <!-- 页脚组件 -->
 <template>
-  <footer class="footer">
-    <div class="footer-container">
-      <div class="footer-grid">
+  <footer class="footer bg-white">
+    <div class="container mx-auto px-4 py-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
         <div class="footer-section">
-          <h4 class="footer-title">关于我们</h4>
-          <p class="footer-text">
-            提供专业的在线图片和文件处理工具，让文件处理更简单高效。
-          </p>
+          <h3 class="text-lg font-semibold mb-4">关于我们</h3>
+          <p class="text-gray-600">提供简单、快速、高效的在线工具，让文件处理变得更简单。</p>
         </div>
-        
+
         <div class="footer-section">
-          <h4 class="footer-title">快速链接</h4>
-          <ul class="footer-links">
-            <li><router-link to="/">首页</router-link></li>
-            <li><router-link to="/image-tools">图片工具</router-link></li>
-            <li><router-link to="/file-tools">文件工具</router-link></li>
-            <li><router-link to="/more">更多功能</router-link></li>
+          <h3 class="text-lg font-semibold mb-4">图片工具</h3>
+          <ul class="space-y-2">
+            <li><router-link to="/image-compress" class="text-gray-600 hover:text-blue-500">图片压缩</router-link></li>
+            <li><router-link to="/image-convert" class="text-gray-600 hover:text-blue-500">格式转换</router-link></li>
+            <li><router-link to="/image-crop" class="text-gray-600 hover:text-blue-500">图片裁剪</router-link></li>
+            <li><router-link to="/image-mosaic" class="text-gray-600 hover:text-blue-500">图片马赛克</router-link></li>
+            <li><router-link to="/image-watermark" class="text-gray-600 hover:text-blue-500">图片水印</router-link></li>
           </ul>
         </div>
 
         <div class="footer-section">
-          <h4 class="footer-title">联系方式</h4>
-          <ul class="footer-links">
-            <li><a href="mailto:contact@example.com">邮箱：contact@example.com</a></li>
-            <li>QQ群：123456789</li>
+          <h3 class="text-lg font-semibold mb-4">文件工具</h3>
+          <ul class="space-y-2">
+            <li><router-link to="/file-watermark" class="text-gray-600 hover:text-blue-500">文件水印</router-link></li>
+            <li><router-link to="/file-convert" class="text-gray-600 hover:text-blue-500">文件转换</router-link></li>
           </ul>
         </div>
 
         <div class="footer-section">
-          <h4 class="footer-title">版权信息</h4>
-          <p class="footer-text">
-            © 2024 在线工具. All rights reserved.
-          </p>
+          <h3 class="text-lg font-semibold mb-4">联系我们</h3>
+          <ul class="space-y-2">
+            <li class="text-gray-600">邮箱：support@example.com</li>
+            <li class="text-gray-600">微信：your-wechat</li>
+          </ul>
         </div>
+      </div>
+
+      <div class="border-t border-gray-200 mt-8 pt-8 text-center text-gray-600">
+        <p>&copy; 2024 在线工具. All rights reserved.</p>
       </div>
     </div>
   </footer>
@@ -45,67 +49,16 @@
 
 <style scoped>
 .footer {
-  background-color: #1f2937;
-  padding: 40px 0;
-  color: #ffffff;
+  border-top: 1px solid #eee;
 }
 
-.footer-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 24px;
-}
-
-.footer-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 40px;
-}
-
-.footer-title {
-  font-size: 16px;
-  font-weight: 600;
-  margin-bottom: 16px;
-}
-
-.footer-text {
-  font-size: 14px;
-  line-height: 1.6;
-  color: rgba(255, 255, 255, 0.8);
-}
-
-.footer-links {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.footer-links li {
-  margin-bottom: 8px;
-}
-
-.footer-links a {
-  color: rgba(255, 255, 255, 0.8);
-  text-decoration: none;
-  font-size: 14px;
-  transition: color 0.3s ease;
-}
-
-.footer-links a:hover {
-  color: #ffffff;
+.footer-section {
+  margin-bottom: 24px;
 }
 
 @media (max-width: 768px) {
-  .footer-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 32px;
-  }
-}
-
-@media (max-width: 480px) {
-  .footer-grid {
-    grid-template-columns: 1fr;
-    gap: 24px;
+  .footer-section {
+    text-align: center;
   }
 }
 </style> 

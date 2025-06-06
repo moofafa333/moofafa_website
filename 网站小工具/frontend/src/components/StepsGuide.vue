@@ -1,14 +1,37 @@
 <!-- 使用步骤说明组件 -->
 <template>
-  <section class="steps">
-    <div class="steps-container">
-      <div class="steps-grid">
-        <div class="step-item" v-for="step in steps" :key="step.id">
-          <div class="step-icon">
-            <img :src="step.icon" :alt="step.title">
-          </div>
-          <h3 class="step-title">{{ step.title }}</h3>
-          <p class="step-description">{{ step.description }}</p>
+  <section class="steps-guide bg-gray-50">
+    <div class="container mx-auto px-4 py-16">
+      <h2 class="text-3xl font-bold text-center mb-12">使用步骤</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="step-card">
+          <el-card shadow="hover" class="h-full">
+            <div class="text-center">
+              <div class="step-number">1</div>
+              <h3 class="text-xl font-semibold mb-2">选择功能</h3>
+              <p class="text-gray-600">从功能列表中选择需要使用的工具</p>
+            </div>
+          </el-card>
+        </div>
+
+        <div class="step-card">
+          <el-card shadow="hover" class="h-full">
+            <div class="text-center">
+              <div class="step-number">2</div>
+              <h3 class="text-xl font-semibold mb-2">上传文件</h3>
+              <p class="text-gray-600">将需要处理的文件拖拽到上传区域或点击上传</p>
+            </div>
+          </el-card>
+        </div>
+
+        <div class="step-card">
+          <el-card shadow="hover" class="h-full">
+            <div class="text-center">
+              <div class="step-number">3</div>
+              <h3 class="text-xl font-semibold mb-2">下载结果</h3>
+              <p class="text-gray-600">处理完成后下载处理好的文件</p>
+            </div>
+          </el-card>
         </div>
       </div>
     </div>
@@ -39,54 +62,25 @@ const steps = [
 </script>
 
 <style scoped>
-.steps {
-  background-color: #f9fafb;
-  padding: 60px 0;
+.step-number {
+  width: 40px;
+  height: 40px;
+  background-color: #409EFF;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0 auto 16px;
 }
 
-.steps-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 24px;
+.step-card {
+  transition: transform 0.2s;
 }
 
-.steps-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 40px;
-}
-
-.step-item {
-  text-align: center;
-}
-
-.step-icon {
-  width: 64px;
-  height: 64px;
-  margin: 0 auto 20px;
-}
-
-.step-icon img {
-  width: 100%;
-  height: 100%;
-}
-
-.step-title {
-  font-size: 18px;
-  color: #262626;
-  margin-bottom: 12px;
-}
-
-.step-description {
-  font-size: 14px;
-  color: #595959;
-  line-height: 1.5;
-}
-
-@media (max-width: 768px) {
-  .steps-grid {
-    grid-template-columns: 1fr;
-    gap: 32px;
-  }
+.step-card:hover {
+  transform: translateY(-4px);
 }
 </style> 

@@ -1,12 +1,13 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
+import ImageCrop from '../views/ImageCrop.vue'
 import ImageCompress from '../views/ImageCompress.vue'
 import ImageConvert from '../views/ImageConvert.vue'
-import ImageCrop from '../views/ImageCrop.vue'
 import ImageMosaic from '../views/ImageMosaic.vue'
 import ImageWatermark from '../views/ImageWatermark.vue'
 import FileWatermark from '../views/FileWatermark.vue'
 import FileConvert from '../views/FileConvert.vue'
+import FileCompress from '../views/FileCompress.vue'
 import ImageConverterView from '../views/ImageConverterView.vue'
 
 const router = createRouter({
@@ -18,28 +19,28 @@ const router = createRouter({
       component: Home
     },
     {
-      path: '/image-compress',
-      name: 'image-compress',
-      component: ImageCompress
-    },
-    {
-      path: '/image-convert',
-      name: 'image-convert',
-      component: ImageConvert
-    },
-    {
-      path: '/image-crop',
-      name: 'image-crop',
+      path: '/crop',
+      name: 'crop',
       component: ImageCrop
     },
     {
-      path: '/image-mosaic',
-      name: 'image-mosaic',
+      path: '/compress',
+      name: 'compress',
+      component: ImageCompress
+    },
+    {
+      path: '/convert',
+      name: 'convert',
+      component: ImageConvert
+    },
+    {
+      path: '/mosaic',
+      name: 'mosaic',
       component: ImageMosaic
     },
     {
-      path: '/image-watermark',
-      name: 'image-watermark',
+      path: '/watermark',
+      name: 'watermark',
       component: ImageWatermark
     },
     {
@@ -51,6 +52,11 @@ const router = createRouter({
       path: '/file-convert',
       name: 'file-convert',
       component: FileConvert
+    },
+    {
+      path: '/file-compress',
+      name: 'file-compress',
+      component: FileCompress
     },
     {
       path: '/image-converter',
